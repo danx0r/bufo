@@ -19,8 +19,8 @@ def bufo_(bits):
 def bufo(bits):
     s = ""
     while bits:
-        s += bufo_(bits & 0xffff)
-        bits >>= 16
+        s += bufo_(bits & 0x3fff)
+        bits >>= 14
         s += " "
     return s.strip().capitalize()
 
@@ -46,7 +46,7 @@ def rebufo(b):
     x = b.split()
     x.reverse()
     for w in x:
-        h <<= 16
+        h <<= 14
         h += rebufo_(w)
     return h
 
